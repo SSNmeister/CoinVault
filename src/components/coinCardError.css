@@ -7,6 +7,12 @@
   align-items: center;
   height: 10vh;
 }
+.data-content-header {
+  padding-left: 0px;
+}
+#coin-inner-boxes-header {
+  justify-content: space-between;
+}
 .data-content-error-right {
   display: flex;
   justify-content: center;

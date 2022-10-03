@@ -16,6 +16,8 @@
   transform: translate(-50%, -50%);
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   /* background-color: rgb(19, 17, 23, 0.95); */
   border-radius: 8px;
   background-color: rgba(64, 43, 181, 0.9);
@@ -30,7 +32,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  border-bottom: 0.1vw solid white;
+  /* border-bottom: 0.1vw solid gold; */
+  box-shadow: 0px 5px 0px -4px gold;
 }
 .modalTop-left {
   margin-right: 3%;
@@ -62,21 +65,34 @@
   /* margin-bottom: 5%; */
   font-family: "Montserrat", sans-serif;
   font-size: 5vh;
-  color: white;
+  color: gold;
 }
 .coin-details-header2 {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
+.coin-description-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: rgba(37, 37, 37, 0.7); */
+  border-radius: 8px;
+  /* box-shadow: 0px 0px 5px gold; */
+  margin-bottom: 10%;
+  margin-top: 2%;
+  padding-left: 1.5vw;
+  padding-right: 1.5vw;
+  padding-top: 0.2vw;
+  padding-bottom: 0.2vw;
+}
 .coin-description {
-  width: 90%;
+  width: 100%;
   font-family: "Arsenal", sans-serif;
   text-align: justify;
   font-size: 1vw;
-  font-weight: light;
-  color: white;
-  margin-bottom: 10%;
+  font-weight: normal;
+  color: rgb(250, 221, 55);
 }
 
 .closeBtn {
@@ -96,6 +112,7 @@
   justify-content: right;
   align-items: center;
   margin-right: 1vw;
+  margin-top: 0.5vw;
 }
 .day-button {
   color: gold;

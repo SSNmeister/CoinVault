@@ -1,3 +1,8 @@
+.favourite {
+  min-height: 100vh;
+  background: url("../assets/cryptoBackground.jpeg") no-repeat center
+    center/cover;
+}
 /* ========================= Card Button ========================= */
 .coin-container-button-box {
   display: flex;
@@ -38,7 +43,7 @@
 .watchList-individual-rows {
   /* display: grid; */
   /* grid-template-columns: repeat(6, 15%);
-  grid-gap: 2vw; */
+    grid-gap: 2vw; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -57,7 +62,7 @@
   margin-bottom: 1vh;
   margin-top: 1vh;
   /* background-color: rgba(37, 37, 37, 0.8);
-  border-radius: 8px; */
+    border-radius: 8px; */
   color: white;
   font-size: 1vw;
 }

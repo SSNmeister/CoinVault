@@ -1,5 +1,4 @@
 import React from "react";
-import { UilFrown } from "@iconscout/react-unicons";
 import { UilFavorite } from "@iconscout/react-unicons";
 
 const CoinCard = (props) => {
@@ -44,6 +43,7 @@ const CoinCard = (props) => {
                 <img
                   className="coin-image"
                   src={props.coinList.image.large}
+                  alt="images"
                 ></img>
                 <p className="data-content-results-font">
                   {props.coinList.name}

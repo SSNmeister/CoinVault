@@ -5,6 +5,7 @@ import { UilMinusSquare } from "@iconscout/react-unicons";
 //install moment for time data, npm install moment --save
 //The parser converts an HTML string to one or more React elements.
 import parse from "html-react-parser";
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 import {
   Chart as ChartJS,
@@ -16,7 +17,6 @@ import {
   Tooltip,
   Filler,
   Legend,
-  SubTitle,
 } from "chart.js";
 import { Line } from "react-chartjs-2";
 import moment from "moment";
@@ -33,8 +33,8 @@ ChartJS.register(
 );
 
 const Modal = (props) => {
-  //   const [historicalData, setHistoricalData] = useState([]);
-  const [chartOptions, setChartOptions] = useState();
+  // const [historicalData, setHistoricalData] = useState([]);
+  // const [chartOptions, setChartOptions] = useState();
   const [chartData, setChartData] = useState(undefined);
   const [coinDetails, setCoinDetails] = useState();
   const [day, setDay] = useState("7");
@@ -50,7 +50,7 @@ const Modal = (props) => {
       `https://api.coingecko.com/api/v3/coins/${item}/market_chart?vs_currency=usd&days=${day}`
     );
     const data = await res.json();
-    console.log(data.prices);
+    console.log(data);
 
     //================= Coin Description API ==================
     // === fetching coin description data from useEffect() =====
@@ -59,7 +59,7 @@ const Modal = (props) => {
     );
     const dataCoinDescription = await resCoinDescription.json();
     setCoinDetails(dataCoinDescription);
-    console.log(dataCoinDescription.description.en);
+    console.log(dataCoinDescription);
 
     //=========================================================
     //=== convert array into x(time) and y(value) key-value pairs ===
@@ -90,8 +90,10 @@ const Modal = (props) => {
           label: `Price over past ${day} day(s)`,
           data: coinChartData.map((item) => item.y),
           // borderColor: "rgb(78, 43, 255, 0.6)",
-          borderColor: "rgb(255, 215, 0)",
-          backgroundColor: "rgb(0, 0, 0, 0.2)",
+          color: "white",
+          borderColor: "gold",
+          backgroundColor: "rgb(0, 0, 0, 0.3)",
+          borderWidth: "1",
         },
       ],
     };
@@ -104,24 +106,37 @@ const Modal = (props) => {
   //========== Run fetchChartData with item.id ==============
   useEffect(() => {
     setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
     if (!props.openModalDetails) return null;
     //==== watchlist data's item.id from WatchList ====
     fetchChartData(props.openModalDetails);
   }, [props.openModalDetails, day]);
 
-  console.log(coinDetails);
   //===================== Chart Options ======================
   const options = {
     responsive: true,
     plugins: {
       title: {
         display: true,
-        text: "Chart.js Line Chart",
+      },
+    },
+    scales: {
+      yAxes: {
+        ticks: {
+          color: "gold",
+        },
+      },
+      xAxes: {
+        ticks: {
+          color: "gold",
+        },
       },
     },
     elements: {
       point: {
-        radius: 2,
+        radius: 0.5,
       },
     },
   };
@@ -130,7 +145,6 @@ const Modal = (props) => {
   function handleDays(x) {
     setDay(x);
   }
-  console.log(day);
   //================================================================
 
   if (!props.openModal) return null;
@@ -138,47 +152,66 @@ const Modal = (props) => {
   return (
     <div className="overlay">
       <div className="modalContainer">
-        <div className="modalTop">
-          <div className="modalTop-left">
-            <img
-              className="coin-details-image"
-              src={props.coinDetails.image.large}
-            />
-          </div>
-          <div className="modalTop-right">
-            {/* <p onClick={props.closeModal} className="closeBtn">
+        {loading ? (
+          <ScaleLoader
+            color={"gold"}
+            loading={loading}
+            height={70}
+            width={8}
+            radius={10}
+            margin={5}
+            speedMultiplier={1.2}
+          />
+        ) : (
+          <>
+            <div className="modalTop">
+              <div className="modalTop-left">
+                <img
+                  className="coin-details-image"
+                  src={props.coinDetails.image.large}
+                  alt="images"
+                />
+              </div>
+              <div className="modalTop-right">
+                {/* <p onClick={props.closeModal} className="closeBtn">
               X
             </p> */}
-            <UilMinusSquare
-              onClick={props.closeModal}
-              className="closeBtn"
-            ></UilMinusSquare>
-            <div className="coin-details-header2">
-              <h3 className="coin-details-header">{props.coinDetails.name}</h3>
+                <UilMinusSquare
+                  onClick={props.closeModal}
+                  className="closeBtn"
+                ></UilMinusSquare>
+                <div className="coin-details-header2">
+                  <h3 className="coin-details-header">
+                    {props.coinDetails.name}
+                  </h3>
+                </div>
+                {coinDetails && (
+                  <div className="coin-description-box">
+                    <p className="coin-description">
+                      {parse(coinDetails.description.en.split(". ")[0])}
+                      <br />
+                      <br />
+                      {parse(coinDetails.description.en.split(". ")[1])}
+                    </p>
+                  </div>
+                )}
+              </div>
             </div>
-            {coinDetails && (
-              <p className="coin-description">
-                {parse(coinDetails.description.en.split(". ")[0])}
-                <br />
-                <br />
-                {parse(coinDetails.description.en.split(". ")[1])}
-              </p>
-            )}
-          </div>
-        </div>
-        <div className="modalBottom">
-          <div className="day-button-box">
-            <button className="day-button" onClick={() => handleDays("1")}>
-              1 Day
-            </button>
-            <button className="day-button" onClick={() => handleDays("7")}>
-              7 Days
-            </button>
-          </div>
-          {/* to use chart.js <Line>, provide options and data */}
-          {/* chartData must not be undefined */}
-          {chartData && <Line options={options} data={chartData} />}
-        </div>
+            <div className="modalBottom">
+              <div className="day-button-box">
+                <button className="day-button" onClick={() => handleDays("1")}>
+                  1 Day
+                </button>
+                <button className="day-button" onClick={() => handleDays("7")}>
+                  7 Days
+                </button>
+              </div>
+              {/* to use chart.js <Line>, provide options and data */}
+              {/* chartData must not be undefined */}
+              {chartData && <Line options={options} data={chartData} />}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );

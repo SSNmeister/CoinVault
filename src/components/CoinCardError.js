@@ -1,5 +1,4 @@
 import React from "react";
-import { UilQuestion } from "@iconscout/react-unicons";
 import { UilFileQuestion } from "@iconscout/react-unicons";
 import { UilImageQuestion } from "@iconscout/react-unicons";
 import "./coinCardError.css";
@@ -8,7 +7,7 @@ const CoinCardError = (props) => {
   //================ Add coinList into watchList Array ================
   //===================== through Button onClick ======================
   function watchList() {
-    const x = props.coinList;
+    // const x = props.coinList;
   }
 
   //====================================================================

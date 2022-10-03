@@ -1,14 +1,17 @@
 import React from "react";
-import "./watchList.css";
 import { UilArrowGrowth, UilChartDown } from "@iconscout/react-unicons";
 import { UilCancel } from "@iconscout/react-unicons";
+import "../components/favourites.css";
 
-const WatchList = (props) => {
-  console.log(props.watchListFromApp);
+const Favourites = (props) => {
+  const removeFromCart = (index) => {
+    const favouriteArray = props.watchListApp.filter((d, i) => i !== index);
+    props.setWatchListApp(favouriteArray);
+  };
 
   return (
-    <div className="watchlist-card-main-box">
-      {!props.watchListFromApp.length == 0 ? (
+    <div className="favourite">
+      <div className="watchlist-card-main-box">
         <div className="watchlist-card-box">
           <div className="watchlist-card-row">
             <p
@@ -24,7 +27,7 @@ const WatchList = (props) => {
             <p className="watchlist-header-fonts">Volume</p>
             <p className="watchlist-header-fonts">Market Cap</p>
           </div>
-          {props.watchListFromApp.map((item, i) => {
+          {props.watchListApp.map((item, i) => {
             return (
               // <div className="watchlist-inner-card-box">
               //   <p className="ranking-number">Rank #{item.current_price}</p>
@@ -33,15 +36,15 @@ const WatchList = (props) => {
                 <div className="watchlist-delete-icon-box">
                   <UilCancel
                     className="watchlist-delete-icon"
-                    onClick={() => props.removeFromCart(i)}
+                    onClick={() => removeFromCart(i)}
                   />
                 </div>
                 <div
                   className="watchlist-inner-card-box"
                   key={item.id + Math.random() * 1000}
-                  onClick={() => {
-                    props.handleOpenModalDetails(item);
-                  }}
+                  // onClick={() => {
+                  //   props.handleOpenModalDetails(item);
+                  // }}
                 >
                   <div className="watchlist-fonts">
                     {item.market_cap_rank != null ? (
@@ -143,11 +146,9 @@ const WatchList = (props) => {
             );
           })}
         </div>
-      ) : (
-        <></>
-      )}
+      </div>
     </div>
   );
 };
 
-export default WatchList;
+export default Favourites;

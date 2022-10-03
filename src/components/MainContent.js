@@ -1,5 +1,4 @@
 import React from "react";
-import CoinCard from "./CoinCard";
 
 const MainContent = (props) => {
   return (
@@ -16,9 +15,6 @@ const MainContent = (props) => {
           />
         </form>
       </div>
-      {/* <div className="searched-coin-list"> */}
-      {/* <div className="coin-card">{props.coinList.marketCapUsd}</div> */}
-      {/* </div> */}
     </main>
   );
 };
