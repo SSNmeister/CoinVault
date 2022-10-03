@@ -1,0 +1,327 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Arsenal:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+.App {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 60vw;
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  min-height: 100vh;
+  background: url("./assets/cryptoBackground.jpeg") no-repeat center
+    center/cover;
+}
+
+/* ========================= HEADER related ========================= */
+.header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: black;
+  font-size: 3vw;
+  font-weight: bolder;
+  text-align: center;
+  font-family: "Arsenal", sans-serif;
+}
+.span1:hover {
+  color: gold;
+}
+.span1 {
+  color: rgba(78, 43, 255, 1);
+  font-weight: bolder;
+  font-family: "Arsenal", sans-serif;
+}
+/* ================================================================== */
+
+/* ========================= MAIN-BOX related ========================= */
+
+.main-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main-content {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 3%;
+}
+.search--input {
+  border-radius: 10px;
+  border: 2px solid rgba(78, 43, 255, 0.2);
+  text-transform: lowercase;
+  background-color: rgba(78, 43, 255, 0.8);
+  font-family: "Arsenal", sans-serif;
+  color: rgb(222, 199, 169);
+  width: 25vw;
+  font-size: 1.2vw;
+}
+.search--input:hover {
+  color: white;
+  background-color: rgba(71, 36, 250, 0.8);
+  border: 2px solid rgba(71, 36, 250, 0.2);
+  font-family: "Arsenal", sans-serif;
+  font-weight: lighter;
+}
+/* ========================= SIDE BAR related ========================= */
+.sidebar-box {
+  position: absolute;
+  top: 17vh;
+  left: 3vw;
+  /* top: 10%;
+  left: 10%; */
+  width: 8vw;
+}
+.aside {
+  min-width: 80px;
+  min-height: 100px;
+}
+.nav {
+  /* max-width: 8vw; */
+  background-color: rgba(37, 37, 37, 0.5);
+  padding: 1vw;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+}
+.topCoin-header {
+  margin: auto;
+  margin-bottom: 0.5vh;
+  font-family: "Arsenal", sans-serif;
+  font-size: 1.5vw;
+  color: white;
+  font-weight: bolder;
+}
+.ranking-items {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: solid 1px;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  box-shadow: 3px 3px rgba(37, 37, 37, 0.4);
+}
+.ranking-number {
+  font-size: 1vw;
+  /* border: black 1px solid; */
+  border-radius: 5px;
+  background-color: rgba(78, 43, 255, 0.8);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.8);
+  color: white;
+  font-family: "Arsenal", sans-serif;
+  font-weight: normal;
+  width: fit-content;
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh;
+  padding-left: 0.5vh;
+  padding-right: 0.5vh;
+}
+
+.aList {
+  display: flex;
+  flex-direction: column;
+}
+
+.a {
+  text-decoration: none;
+  outline: none;
+  color: white;
+  text-transform: uppercase;
+  font-family: "Outfit", sans-serif;
+  font-size: 1.2vw;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  /* border-radius: 5px; */
+  /* margin-top: 0.5vh;
+  margin-bottom: 0.5vh;
+  margin-right: 0.5vh;
+  margin-left: 0.5vh;
+  padding-top: 0.5vh;
+  padding-bottom: 0.5vh; */
+}
+.a:hover {
+  color: gold;
+  background-color: rgba(37, 37, 37, 0.2);
+  font-family: "Outfit", sans-serif;
+  font-size: 1.2vw;
+  font-weight: bolder;
+}
+
+.a:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+}
+
+.a:hover:before {
+  opacity: 1;
+}
+
+.a:before {
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+/* ================================================================== */
+/* ========================= COIN CARD related ========================= */
+.searched-coin-list {
+  width: 70%;
+  max-width: 70%;
+  /* max-height: 70vh; */
+  background-color: rgba(37, 37, 37, 0.5);
+  box-shadow: 0px 0px 12px #18191b;
+  border-radius: 8px;
+}
+#searched-coin-list-default {
+  background-color: rgb(42, 43, 50);
+  position: relative;
+  padding: 5px 10px;
+  color: rgb(189, 189, 189);
+}
+#coin-inner-boxes-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 5vh;
+}
+
+.coin-inner-boxes {
+  max-width: 80%;
+  max-height: 80%;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.7rem 1rem;
+  background-color: rgba(37, 37, 37, 0.8);
+  border-radius: 8px;
+}
+.data-content-header {
+  /* margin-right: 10px; */
+  padding-left: 40%;
+  font-size: 2.5vw;
+  color: rgb(225, 209, 255);
+  font-family: "Arsenal", sans-serif;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+.favourite-icon {
+  color: gold;
+}
+.favourite-icon:hover {
+  transform: scale(1.2);
+  color: rgba(78, 43, 255, 0.8);
+}
+
+/* ========================= Card 2nd row ========================= */
+.coin-image {
+  width: 20%;
+  margin-right: 8px;
+}
+
+.rank-box {
+  margin-top: 4px;
+  display: flex;
+}
+
+.rank-icon {
+  background-color: rgba(78, 43, 255, 0.8);
+  border-radius: 8px;
+  padding: 0.2rem;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.8);
+  font-family: "Arsenal", sans-serif;
+  color: white;
+}
+
+.data-content {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.data-content-left {
+  display: flex;
+  align-items: center;
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.data-content-right {
+  display: flex;
+  justify-content: center;
+}
+
+.data-content-results-font {
+  margin-right: 10px;
+  font-size: 1.2vw;
+  color: white;
+  font-family: "Arsenal", sans-serif;
+  font-weight: bold;
+}
+.data-content-results-font-price {
+  color: white;
+  font-family: "Outfit", sans-serif;
+  font-size: 3vw;
+  font-weight: bolder;
+  margin: auto;
+}
+
+p {
+  /* padding-right: 1%; */
+  font-weight: lighter;
+}
+/* ========================= Card 3rd row ========================= */
+.data2-content {
+  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(2, 48%);
+  grid-gap: 4%;
+  width: 100%;
+}
+
+.data2-content-fonts {
+  font-size: 1.2vw;
+  color: white;
+  font-family: "Arsenal", sans-serif;
+  font-weight: bold;
+}
+#data2-content-results-fonts {
+  color: white;
+  font-family: "Outfit", sans-serif;
+  font-size: 1vw;
+  font-weight: light;
+}
+
+.rows {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgb(255, 255, 255, 0.5);
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  padding-bottom: 2%;
+  /* background-color: rgba(37, 37, 37, 0.5); */
+}
+.data2-content-results-fonts-error {
+  color: red;
+  font-family: "Outfit", sans-serif;
+  font-size: 1vw;
+  font-weight: normal;
+}
+.data2-error-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: red;
+}
+.data2-error-icon {
+  transform: scale(1.3);
+  margin-right: 0.5vw;
+}

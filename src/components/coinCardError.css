@@ -1,0 +1,26 @@
+.error-questionmark {
+  color: rgb(225, 209, 255);
+}
+.data-content-error-left {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+.data-content-error-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+.data2-content-fonts {
+  font-size: 1.2vw;
+  color: rgb(225, 209, 255);
+  font-family: "Arsenal", sans-serif;
+  font-weight: bold;
+}
+.data2-content-results-fonts {
+  color: rgb(225, 209, 255);
+  font-family: "Outfit", sans-serif;
+  font-size: 1vw;
+}

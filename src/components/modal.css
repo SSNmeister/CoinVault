@@ -1,0 +1,114 @@
+.overlay {
+  position: fixed;
+  top: 0%;
+  right: 0%;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+.modalContainer {
+  padding: 2%;
+  width: 45vw;
+  /* height: 80vh; */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  /* background-color: rgb(19, 17, 23, 0.95); */
+  border-radius: 8px;
+  background-color: rgba(64, 43, 181, 0.9);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.8);
+  /* background-color: rgb(255, 215, 0); */
+}
+
+/* ================ MODAL LEFT ============== */
+.modalTop {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 0.1vw solid white;
+}
+.modalTop-left {
+  margin-right: 3%;
+  margin-bottom: 3%;
+}
+.modalTop-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.modalBottom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  margin-top: 1.2%;
+}
+.coin-details-image {
+  /* transform: scale(0.8); */
+  width: 15vw;
+}
+
+.coin-details-header {
+  display: flex;
+  margin: auto;
+  margin-bottom: 5%;
+  font-weight: bolder;
+  /* margin-bottom: 5%; */
+  font-family: "Montserrat", sans-serif;
+  font-size: 5vh;
+  color: white;
+}
+.coin-details-header2 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.coin-description {
+  width: 90%;
+  font-family: "Arsenal", sans-serif;
+  text-align: justify;
+  font-size: 1vw;
+  font-weight: light;
+  color: white;
+  margin-bottom: 10%;
+}
+
+.closeBtn {
+  cursor: pointer;
+  position: fixed;
+  top: 2%;
+  right: 2%;
+  color: white;
+}
+
+.closeBtn:hover {
+  transform: scale(1.05);
+  color: gold;
+}
+.day-button-box {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  margin-right: 1vw;
+}
+.day-button {
+  color: gold;
+  font-family: "Arsenal", sans-serif;
+  font-weight: bold;
+  font-size: 1.2vw;
+  background-color: transparent;
+  border: none;
+  margin-right: 1vw;
+  /* border-bottom: 1px black solid; */
+}
+.day-button:hover {
+  transform: scale(1.1);
+  color: rgb(255, 234, 115);
+  border-bottom: rgb(255, 234, 115) 1px;
+}
