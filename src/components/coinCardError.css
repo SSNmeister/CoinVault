@@ -9,9 +9,16 @@
 }
 .data-content-header {
   padding-left: 0px;
+  font-family: "Outfit", sans-serif;
+  font-size: 2vw;
+  margin-top: 0.5vw;
+  margin-bottom: 0.5vw;
 }
 #coin-inner-boxes-header {
   justify-content: space-between;
+}
+#coin-inner-boxes-header-error {
+  justify-content: center;
 }
 .data-content-error-right {
   display: flex;

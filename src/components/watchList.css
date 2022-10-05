@@ -76,12 +76,13 @@
 }
 #watchlist-header-fonts-rank {
   /* margin-left: 4vw; */
-  color: gold;
+  color: black;
 }
-.watchlist-header-fonts-rank-hashtag {
-  color: white;
+#watchlist-header-fonts-rank-hashtag {
+  color: black;
   font-size: 2vw;
   margin-left: 0.5vw;
+  text-decoration: none;
 }
 .watchlist-delete-icon-box {
   display: flex;

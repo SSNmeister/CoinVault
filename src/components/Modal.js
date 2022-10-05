@@ -35,70 +35,72 @@ ChartJS.register(
 const Modal = (props) => {
   const [chartData, setChartData] = useState(undefined);
   const [coinDetails, setCoinDetails] = useState();
-  const [day, setDay] = useState("7");
+  const [day, setDay] = useState(7);
   const [loading, setLoading] = useState(false);
 
   //=========================================================
   //==================== Chart Data API =====================
   //=== fetching chart data from useEffect(props.openModalDetails) ===
   const fetchChartData = async (item) => {
-    console.log(item);
+    try {
+      console.log(item);
 
-    const res = await fetch(
-      `https://api.coingecko.com/api/v3/coins/${item}/market_chart?vs_currency=usd&days=${day}`
-    );
-    const data = await res.json();
-    console.log(data);
+      const res = await fetch(
+        `https://api.coingecko.com/api/v3/coins/${item}/market_chart?vs_currency=usd&days=${day}`
+      );
+      const data = await res.json();
+      console.log(data);
 
-    //================= Coin Description API ==================
-    // === fetching coin description data from useEffect() =====
-    const resCoinDescription = await fetch(
-      `https://api.coingecko.com/api/v3/coins/${item}?community_data=true&developer_data=true`
-    );
-    const dataCoinDescription = await resCoinDescription.json();
-    setCoinDetails(dataCoinDescription);
-    console.log(dataCoinDescription);
+      //================= Coin Description API ==================
+      // === fetching coin description data from useEffect() =====
+      const resCoinDescription = await fetch(
+        `https://api.coingecko.com/api/v3/coins/${item}?community_data=true&developer_data=true`
+      );
+      const dataCoinDescription = await resCoinDescription.json();
+      setCoinDetails(dataCoinDescription);
+      console.log(dataCoinDescription);
 
-    //=========================================================
-    //=== convert array into x(time) and y(value) key-value pairs ===
-    const coinChartData = data.prices.map((item) => {
-      return {
-        x: item[0],
-        y: item[1],
+      //=========================================================
+      //=== convert array into x(time) and y(value) key-value pairs ===
+      const coinChartData = data.prices.map((item) => {
+        return {
+          x: item[0],
+          y: item[1],
+        };
+      });
+      console.log(coinChartData);
+
+      //=========================================================
+      //=============== Format the data (object) ================
+      //==== into acceptable format of chart.js (Area chart) ====
+      const formattedData = {
+        labels: coinChartData.map((item) => {
+          //format the x key (timestamp) into mmm dd
+          if (day === 7) {
+            return moment(item.x).format("MMM DD");
+          } else if (day === 1) {
+            return moment(item.x).format("h:mm a");
+          }
+        }),
+        datasets: [
+          {
+            fill: true,
+            label: `Price over past ${day} day(s)`,
+            data: coinChartData.map((item) => item.y),
+            color: "white",
+            borderColor: "gold",
+            backgroundColor: "rgb(0, 0, 0, 0.3)",
+            borderWidth: 1.5,
+            hoverBorderWidth: 3,
+          },
+        ],
       };
-    });
-    console.log(coinChartData);
-    // setHistoricalData(coinChartData);
 
-    //=========================================================
-    //=============== Format the data (object) ================
-    //==== into acceptable format of chart.js (Area chart) ====
-    const formattedData = {
-      labels: coinChartData.map((item) => {
-        //format the x key (timestamp) into mmm dd
-        if (day === "7") {
-          return moment(item.x).format("MMM DD");
-        } else {
-          return moment(item.x).format("h:mm a");
-        }
-      }),
-      datasets: [
-        {
-          fill: true,
-          label: `Price over past ${day} day(s)`,
-          data: coinChartData.map((item) => item.y),
-          // borderColor: "rgb(78, 43, 255, 0.6)",
-          color: "white",
-          borderColor: "gold",
-          backgroundColor: "rgb(0, 0, 0, 0.3)",
-          borderWidth: "1",
-        },
-      ],
-    };
-
-    console.log(formattedData);
-    setChartData(formattedData);
-    // props.handleChartDataApp(formattedData);
+      console.log(formattedData);
+      setChartData(formattedData);
+    } catch (e) {
+      console.log("error");
+    }
   };
 
   //=========================================================
@@ -116,20 +118,27 @@ const Modal = (props) => {
   //===================== Chart Options ======================
   const options = {
     responsive: true,
+
     plugins: {
       title: {
-        display: true,
+        display: false,
       },
     },
     scales: {
       yAxes: {
         ticks: {
-          color: "gold",
+          color: "black",
+          font: {
+            size: 20, //this change the font size
+          },
         },
       },
       xAxes: {
         ticks: {
-          color: "gold",
+          color: "black",
+          font: {
+            size: 20, //this change the font size
+          },
         },
       },
     },
@@ -198,10 +207,10 @@ const Modal = (props) => {
             </div>
             <div className="modalBottom">
               <div className="day-button-box">
-                <button className="day-button" onClick={() => handleDays("1")}>
+                <button className="day-button" onClick={() => handleDays(1)}>
                   1 Day
                 </button>
-                <button className="day-button" onClick={() => handleDays("7")}>
+                <button className="day-button" onClick={() => handleDays(7)}>
                   7 Days
                 </button>
               </div>

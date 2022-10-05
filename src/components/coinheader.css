@@ -8,10 +8,12 @@
   height: 3.5vw;
   padding-right: 0.5vw;
   padding-left: 0.5vw;
-  /* margin: auto; */
+  transition: width 1s, height 1s, transform 1s;
 }
 
 .coin-icons:hover {
   scale: 1.1;
   cursor: pointer;
+  filter: invert(1);
+  transform: rotate(30deg);
 }

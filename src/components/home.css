@@ -32,6 +32,17 @@
   margin-right: 3vw;
   width: 40%;
   height: 90%;
+  transition: width 0.5s, height 0.5s, transform 0s;
+}
+#cards-left:hover {
+  scale: 1.05;
+  background-color: rgb(85, 52, 255, 0.9);
+  transform: rotate(-1deg);
+}
+#cards-right:hover {
+  scale: 1.05;
+  background-color: rgb(85, 52, 255, 0.9);
+  transform: rotate(1deg);
 }
 .marketplace-image-box {
   display: flex;
@@ -40,6 +51,9 @@
   height: 40%;
   margin-bottom: 1vh;
   margin-top: 1vh;
+}
+.marketplace-image:hover {
+  cursor: pointer;
 }
 .vault-image-box {
   display: flex;
@@ -51,9 +65,21 @@
 }
 .marketplace-image {
   height: 100%;
+  transition: width 2s, height 2s, transform 1.5s;
+}
+.marketplace-image:hover {
+  height: 110%;
+  filter: hue-rotate(192deg);
+  transform: rotate(10deg);
 }
 .vault-image {
   height: 100%;
+  transition: width 2s, height 2s, transform 1.5s;
+}
+.vault-image:hover {
+  height: 110%;
+  transform: rotate(-10deg);
+  filter: hue-rotate(280deg);
 }
 .header-fonts {
   font-family: "Outfit", sans-serif;
@@ -94,6 +120,9 @@
   height: 7vh;
   margin: auto;
   margin-top: 1.5vh;
+}
+.coin-icons:hover {
+  cursor: pointer;
 }
 .bold-fonts {
   font-weight: bolder;

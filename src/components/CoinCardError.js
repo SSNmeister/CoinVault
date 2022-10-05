@@ -16,8 +16,8 @@ const CoinCardError = (props) => {
     <>
       <div>
         <div className="coin-container">
-          <div className="coin-inner-boxes" id="coin-inner-boxes-header">
-            <h1 className="data-content-header">???</h1>
+          <div className="coin-inner-boxes" id="coin-inner-boxes-header-error">
+            <h1 className="data-content-header">Please select a coin!</h1>
           </div>
           <div className="coin-inner-boxes">
             <div className="rank-box">

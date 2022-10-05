@@ -82,10 +82,25 @@ body {
   margin-right: 8vw;
   margin-left: 2vw;
 }
+.favouritebar-box {
+  width: 15vw;
+  margin-left: 8vw;
+}
+.favourite-coin-icon {
+  margin-right: 20%;
+}
 
 .nav {
   background-color: rgb(85 52 255);
-  border: 2px black solid;
+  border: 3px black solid;
+  box-shadow: 0px 4px 8px #000000;
+  padding: 1vw;
+  display: flex;
+  flex-direction: column;
+}
+.nav-favourite {
+  background-color: rgb(85 52 255);
+  border: 3px black solid;
   box-shadow: 0px 4px 8px #000000;
   padding: 1vw;
   display: flex;
@@ -103,10 +118,14 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: solid 2px black;
+  border: solid 3px black;
   margin-bottom: 5px;
   padding-bottom: 5px;
   background-color: gold;
+  transition: width 0.5s, height 0.5s, transform 0.2s;
+}
+.ranking-items:hover {
+  transform: rotate(-3deg);
 }
 .ranking-number {
   font-size: 1vw;
@@ -120,6 +139,28 @@ body {
   padding-bottom: 0.5vh;
   padding-left: 0.5vh;
   padding-right: 0.5vh;
+}
+.favourite-items-left {
+  background-color: gold;
+  border: black 3px solid;
+  padding: 1vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1vh;
+}
+.favourite-items-right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.favourite-pricechange-icon-green {
+  color: rgb(14 216 14);
+  scale: 1.5;
+}
+.favourite-pricechange-icon-red {
+  color: red;
+  scale: 1.5;
 }
 
 .aList {
@@ -139,7 +180,7 @@ body {
   justify-content: center;
 }
 .a:hover {
-  color: gold;
+  color: rgb(85 52 255);
   font-family: "Outfit", sans-serif;
   font-size: 1.2vw;
   font-weight: bolder;
@@ -169,8 +210,8 @@ body {
   background-color: rgb(85 52 255);
   box-shadow: 0px 4px 5px #18191b;
   border: black 3px solid;
-  margin-right: 20%;
   margin-bottom: auto;
+  margin-right: 20vw;
 }
 #searched-coin-list-default {
   background-color: rgb(42, 43, 50);
@@ -217,6 +258,7 @@ body {
 .favourite-icon:hover {
   transform: scale(1.2);
   color: rgba(78, 43, 255, 0.8);
+  cursor: pointer;
 }
 
 /* ========================= Card 2nd row ========================= */
@@ -239,6 +281,7 @@ body {
   font-family: "Outfit", sans-serif;
   color: black;
   font-weight: bold;
+  font-size: 1.4vw;
 }
 
 .data-content {
@@ -275,8 +318,8 @@ body {
 }
 
 p {
-  /* padding-right: 1%; */
-  font-weight: lighter;
+  font-weight: bold;
+  font-size: 1.2vw;
 }
 /* ========================= Card 3rd row ========================= */
 .data2-content {
@@ -326,4 +369,27 @@ p {
 .data2-error-icon {
   transform: scale(1.3);
   margin-right: 0.5vw;
+}
+
+/* ================= Vault bottom half ====================== */
+.vault-bottom-half {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.thumbsup-box {
+  position: absolute;
+  left: 77vw;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  max-height: 15vh;
+}
+
+.thumbsup {
+  height: 50vh;
+  /* transition: width 0.1s, height 0.1s, transform 0.1s; */
+}
+.thumbsup:hover {
+  transform: scaley(-1);
 }

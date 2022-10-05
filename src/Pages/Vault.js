@@ -6,47 +6,55 @@ import CoinCard from "../components/CoinCard";
 import WatchList from "../components/WatchList";
 import CoinCardError from "../components/CoinCardError";
 import Modal from "../components/Modal";
+import FavouriteBar from "../components/FavouriteBar";
 
 export default function Vault(props) {
   const [coinList, setCoinList] = useState([]);
   const [topCoin, setTopCoin] = useState([]);
 
-  let userInput = "polkadot";
-
+  //=================================================================
   //========================= TOP 5 COINS ===========================
+  //=================================================================
   const getTopCoin = async (url) => {
     const res = await fetch(`https://api.coincap.io/v2/assets`);
     const data = await res.json();
-
     setTopCoin(data.data.slice(0, 5));
   };
 
   useEffect(() => {
     getTopCoin();
-    fetchCoin(userInput);
-  }, []);
+    fetchCoin(props.userInput);
+  }, [props.userInput]);
 
-  //========================== SEARCH COINS ==========================
-  //=========== handleSearch onSubmit ==============
+  //=================================================================
+  //========================= SEARCH COINS ==========================
+  //=================================================================
+  let userKeyedValue = null;
+  const handleSetSearch = (event) => {
+    userKeyedValue = event.target.value;
+  };
   const handleSearch = (event) => {
     event.preventDefault();
-    fetchCoin(userInput);
-  };
-  const handleSetSearch = (event) => {
-    userInput = event.target.value;
+    props.setUserInput(userKeyedValue);
   };
 
   const fetchCoin = async (item) => {
-    const res = await fetch(
-      `https://api.coingecko.com/api/v3/coins/${item}?community_data=true&developer_data=true`
-      // `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${item}&order=market_cap_desc&per_page=1000&page=1&sparkline=false/`
-    );
-    const data = await res.json();
-    setCoinList(data);
-    console.log(coinList);
+    try {
+      const res = await fetch(
+        `https://api.coingecko.com/api/v3/coins/${item}?community_data=true&developer_data=true`
+        // `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${item}&order=market_cap_desc&per_page=1000&page=1&sparkline=false/`
+      );
+      const data = await res.json();
+      setCoinList(data);
+      console.log(data);
+    } catch (e) {
+      console.log("error");
+    }
   };
 
-  //========================= WATCHLIST ARRAY ===========================
+  //=================================================================
+  //======================= WATCHLIST ARRAY  ========================
+  //=================================================================
   let watchListClicked = props.watchListClicked;
   let setWatchListClicked = props.setWatchListClicked;
 
@@ -61,13 +69,17 @@ export default function Vault(props) {
     props.setWatchListApp(watchListArry);
   };
 
-  //=========================== OPEN MODAL =============================
+  //=================================================================
+  //========================== OPEN MODAL  ==========================
+  //=================================================================
   const [openModal, setOpenModal] = useState(false);
   const closeModal = () => {
     setOpenModal(false);
   };
 
-  //============================= CHART ===============================
+  //=================================================================
+  //============================ CHART  =============================
+  //=================================================================
   const [openModalDetails, setOpenModalDetails] = useState("");
   const [coinDetails, setCoinDetails] = useState("");
 
@@ -81,6 +93,12 @@ export default function Vault(props) {
     setCoinDetails(modalData);
   };
 
+  //=================================================================
+  //======================== Favourite Bar ==========================
+  //=================================================================
+  const { watchListApp } = props;
+  console.log(watchListApp);
+
   //===================================================================
 
   return (
@@ -91,9 +109,7 @@ export default function Vault(props) {
           <div className="main-content">
             <MainContent
               handleSearch={handleSearch}
-              // search={search}
               handleSetSearch={handleSetSearch}
-              coinList={coinList}
             />
           </div>
           <div className="main-body-with-sidebar-coincard">
@@ -102,19 +118,14 @@ export default function Vault(props) {
             </div>
             <div className="searched-coin-list">
               {coinList.market_data ? (
-                <CoinCard
-                  coinList={coinList}
-                  addToCart={addToCart}
-                  // watchListClicked={watchListClicked}
-                />
+                <CoinCard coinList={coinList} addToCart={addToCart} />
               ) : (
-                <CoinCardError
-                  coinList={coinList}
-                  addToCart={addToCart}
-                  // watchListClicked={watchListClicked}
-                />
+                <CoinCardError coinList={coinList} addToCart={addToCart} />
               )}
             </div>
+            {/* <div className="favouritebar-box">
+              <FavouriteBar watchListApp={watchListApp} />
+            </div> */}
           </div>
         </div>
 
