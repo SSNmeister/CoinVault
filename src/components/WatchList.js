@@ -1,10 +1,10 @@
 import React from "react";
 import "./watchList.css";
 import { UilArrowGrowth, UilChartDown } from "@iconscout/react-unicons";
-import { UilCancel } from "@iconscout/react-unicons";
+import { UilShoppingBasket } from "@iconscout/react-unicons";
 
 const WatchList = (props) => {
-  console.log(props.watchListFromApp);
+  // console.log(props.watchListFromApp);
 
   return (
     <div className="watchlist-card-main-box">
@@ -31,7 +31,7 @@ const WatchList = (props) => {
               // </div>
               <div className="watchList-individual-rows">
                 <div className="watchlist-delete-icon-box">
-                  <UilCancel
+                  <UilShoppingBasket
                     className="watchlist-delete-icon"
                     onClick={() => props.removeFromCart(i)}
                   />

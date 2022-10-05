@@ -1,5 +1,5 @@
 import React from "react";
-import { UilFavorite } from "@iconscout/react-unicons";
+import { UilSave } from "@iconscout/react-unicons";
 
 const CoinCard = (props) => {
   //================ Add coinList into watchList Array ================
@@ -7,14 +7,15 @@ const CoinCard = (props) => {
   function watchList() {
     const x = props.coinList;
     return (
-      <UilFavorite
-        className="favourite-icon"
-        onClick={() => {
-          props.addToCart(x);
-        }}
-      >
-        Add to watchlist
-      </UilFavorite>
+      <>
+        <UilSave
+          className="favourite-icon"
+          onClick={() => {
+            props.addToCart(x);
+            console.log("clicked");
+          }}
+        ></UilSave>
+      </>
     );
   }
 
@@ -85,9 +86,6 @@ const CoinCard = (props) => {
                       </p>
                     </div>
                   )}
-                  {/* <p className="data2-content-results-fonts">
-                    ${props.coinList.market_cap.toLocaleString()}
-                  </p> */}
                 </div>
                 <div className="rows">
                   <h3 className="data2-content-fonts">All Time High</h3>
@@ -97,7 +95,6 @@ const CoinCard = (props) => {
                     </p>
                   ) : (
                     <div className="data2-error-content">
-                      {/* <UilFrown className="data2-error-icon" /> */}
                       <p className="data2-content-results-fonts-error">
                         Not Found
                       </p>
@@ -108,7 +105,6 @@ const CoinCard = (props) => {
               <div className="data2-content-right">
                 <div className="rows">
                   <h3 className="data2-content-fonts">24 Hour High</h3>
-                  {/* <p className="data2-content-results-fonts"> */}
                   {props.coinList.market_data.high_24h.usd ? (
                     <p id="data2-content-results-fonts">
                       $
@@ -116,7 +112,6 @@ const CoinCard = (props) => {
                     </p>
                   ) : (
                     <div className="data2-error-content">
-                      {/* <UilFrown className="data2-error-icon" /> */}
                       <p className="data2-content-results-fonts-error">
                         Not Found
                       </p>
@@ -133,20 +128,15 @@ const CoinCard = (props) => {
                     </p>
                   ) : (
                     <div className="data2-error-content">
-                      {/* <UilFrown className="data2-error-icon" /> */}
                       <p className="data2-content-results-fonts-error">
                         Not Found
                       </p>
                     </div>
                   )}
-                  {/* <p className="data2-content-results-fonts">
-                    ${props.coinList.low_24h.toLocaleString()}
-                  </p> */}
                 </div>
               </div>
             </div>
           </div>
-          {/* <div className="coin-container-button-box">{watchList()}</div> */}
         </div>
       </div>
     </>

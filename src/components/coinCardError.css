@@ -1,5 +1,5 @@
 .error-questionmark {
-  color: rgb(225, 209, 255);
+  color: black;
 }
 .data-content-error-left {
   display: flex;
@@ -20,13 +20,14 @@
   height: 10vh;
 }
 .data2-content-fonts {
-  font-size: 1.2vw;
-  color: rgb(225, 209, 255);
-  font-family: "Arsenal", sans-serif;
+  font-size: 1.6vw;
+  color: black;
+  font-family: "Outfit", sans-serif;
   font-weight: bold;
 }
 .data2-content-results-fonts {
-  color: rgb(225, 209, 255);
+  color: black;
   font-family: "Outfit", sans-serif;
-  font-size: 1vw;
+  font-weight: normal;
+  font-size: 1.5vw;
 }

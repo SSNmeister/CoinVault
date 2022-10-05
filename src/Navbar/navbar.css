@@ -1,5 +1,5 @@
 .navbar-box {
-  background-color: rgb(66, 37, 211);
+  background-color: rgb(66, 37, 211, 1);
 }
 .Navbar {
   /* padding-right: 3vw; */
@@ -24,7 +24,7 @@
 #navBar-links-icon {
   margin-left: 2vw;
   font-size: 3vw;
-  font-family: "Arsenal", sans-serif;
+  font-family: "Outfit", sans-serif;
 }
 .navBar-links::before {
   content: "";

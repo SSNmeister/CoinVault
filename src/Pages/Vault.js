@@ -11,7 +11,7 @@ export default function Vault(props) {
   const [coinList, setCoinList] = useState([]);
   const [topCoin, setTopCoin] = useState([]);
 
-  let userInput = "bitcoin";
+  let userInput = "polkadot";
 
   //========================= TOP 5 COINS ===========================
   const getTopCoin = async (url) => {
@@ -43,6 +43,7 @@ export default function Vault(props) {
     );
     const data = await res.json();
     setCoinList(data);
+    console.log(coinList);
   };
 
   //========================= WATCHLIST ARRAY ===========================
@@ -95,25 +96,28 @@ export default function Vault(props) {
               coinList={coinList}
             />
           </div>
-          <div className="searched-coin-list">
-            {coinList.market_data ? (
-              <CoinCard
-                coinList={coinList}
-                addToCart={addToCart}
-                // watchListClicked={watchListClicked}
-              />
-            ) : (
-              <CoinCardError
-                coinList={coinList}
-                addToCart={addToCart}
-                // watchListClicked={watchListClicked}
-              />
-            )}
+          <div className="main-body-with-sidebar-coincard">
+            <div className="sidebar-box">
+              <Sidebar topCoin={topCoin} />
+            </div>
+            <div className="searched-coin-list">
+              {coinList.market_data ? (
+                <CoinCard
+                  coinList={coinList}
+                  addToCart={addToCart}
+                  // watchListClicked={watchListClicked}
+                />
+              ) : (
+                <CoinCardError
+                  coinList={coinList}
+                  addToCart={addToCart}
+                  // watchListClicked={watchListClicked}
+                />
+              )}
+            </div>
           </div>
         </div>
-        <div className="sidebar-box">
-          <Sidebar topCoin={topCoin} />
-        </div>
+
         <div>
           {watchListClicked ? (
             <WatchList

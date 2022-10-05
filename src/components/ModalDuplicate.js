@@ -32,7 +32,9 @@ ChartJS.register(
   Legend
 );
 
-const Modal = (props) => {
+const ModalDuplicate = (props) => {
+  // const [historicalData, setHistoricalData] = useState([]);
+  // const [chartOptions, setChartOptions] = useState();
   const [chartData, setChartData] = useState(undefined);
   const [coinDetails, setCoinDetails] = useState();
   const [day, setDay] = useState("7");
@@ -108,10 +110,10 @@ const Modal = (props) => {
     setTimeout(() => {
       setLoading(false);
     }, 1000);
-    if (!props.openModalDetails) return null;
+    if (!props.openModalDetailsDuplicate) return null;
     //==== watchlist data's item.id from WatchList ====
-    fetchChartData(props.openModalDetails);
-  }, [props.openModalDetails, day]);
+    fetchChartData(props.openModalDetailsDuplicate);
+  }, [props.openModalDetailsDuplicate, day]);
 
   //===================== Chart Options ======================
   const options = {
@@ -146,7 +148,7 @@ const Modal = (props) => {
   }
   //================================================================
 
-  if (!props.openModal) return null;
+  if (!props.openModalDuplicate) return null;
 
   return (
     <div className="overlay">
@@ -167,7 +169,7 @@ const Modal = (props) => {
               <div className="modalTop-left">
                 <img
                   className="coin-details-image"
-                  src={props.coinDetails.image.large}
+                  src={props.coinDetailsDuplicate.image.large}
                   alt="images"
                 />
               </div>
@@ -176,12 +178,12 @@ const Modal = (props) => {
               X
             </p> */}
                 <UilMinusSquare
-                  onClick={props.closeModal}
+                  onClick={props.closeModalDuplicate}
                   className="closeBtn"
                 ></UilMinusSquare>
                 <div className="coin-details-header2">
                   <h3 className="coin-details-header">
-                    {props.coinDetails.name}
+                    {props.coinDetailsDuplicate.name}
                   </h3>
                 </div>
                 {coinDetails && (
@@ -214,6 +216,7 @@ const Modal = (props) => {
       </div>
     </div>
   );
+  //   <div>{fetchChartData(props.openModalDetails)}</div>
 };
 
-export default Modal;
+export default ModalDuplicate;

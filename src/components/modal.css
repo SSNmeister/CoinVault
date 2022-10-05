@@ -6,10 +6,18 @@
   height: 100%;
   background-color: rgba(0, 0, 0, 0.7);
 }
+.overlayGif {
+  position: fixed;
+  top: 0%;
+  right: 0%;
+  height: 100vh;
+  width: 100vw;
+  z-index: +1;
+  background-color: rgba(255, 184, 5, 0.3);
+}
 .modalContainer {
   padding: 2%;
   width: 45vw;
-  /* height: 80vh; */
   position: fixed;
   top: 50%;
   left: 50%;
@@ -18,11 +26,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* background-color: rgb(19, 17, 23, 0.95); */
   border-radius: 8px;
   background-color: rgba(64, 43, 181, 0.9);
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.8);
-  /* background-color: rgb(255, 215, 0); */
+}
+.modalContainerGif {
+  padding: 0.5%;
+  /* width: 50vw; */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  background-color: rgb(255, 215, 0, 1);
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.8);
 }
 
 /* ================ MODAL LEFT ============== */
@@ -32,7 +49,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  /* border-bottom: 0.1vw solid gold; */
   box-shadow: 0px 5px 0px -4px gold;
 }
 .modalTop-left {
@@ -76,9 +92,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  /* background-color: rgba(37, 37, 37, 0.7); */
   border-radius: 8px;
-  /* box-shadow: 0px 0px 5px gold; */
   margin-bottom: 10%;
   margin-top: 2%;
   padding-left: 1.5vw;
@@ -122,7 +136,6 @@
   background-color: transparent;
   border: none;
   margin-right: 1vw;
-  /* border-bottom: 1px black solid; */
 }
 .day-button:hover {
   transform: scale(1.1);
