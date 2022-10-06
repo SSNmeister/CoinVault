@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { UilSave } from "@iconscout/react-unicons";
-import { UilFileCheckAlt } from "@iconscout/react-unicons";
+import { UilTrashAlt } from "@iconscout/react-unicons";
 
 const CoinCard = (props) => {
+  console.log(props.watchListApp);
+  const isFav = () =>
+    props.watchListApp.find((e) => e.id === props.coinList.id);
+
   //================ Add coinList into watchList Array ================
   //===================== through Button onClick ======================
   function watchList() {
@@ -11,13 +15,24 @@ const CoinCard = (props) => {
 
     return (
       <>
-        <UilSave
-          className="favourite-icon"
-          onClick={() => {
-            props.addToCart(x);
-            console.log("clicked");
-          }}
-        ></UilSave>
+        {isFav() ? (
+          <UilTrashAlt
+            className="favourite-icon-delete"
+            onClick={() => {
+              props.removeFromCart(x.id);
+            }}
+          ></UilTrashAlt>
+        ) : (
+          <UilSave
+            className="favourite-icon"
+            onClick={() => {
+              props.addToCart(x);
+              console.log("props.coinList added to watchListApp");
+            }}
+            onMouseEnter={() => props.setIsShown(true)}
+            onMouseLeave={() => props.setIsShown(false)}
+          ></UilSave>
+        )}
       </>
     );
   }
@@ -56,9 +71,9 @@ const CoinCard = (props) => {
                 </p>
               </div>
               <div className="data-content-right">
-                {props.coinList.current_price < 1 ? (
+                {props.coinList.market_data.current_price.usd < 1 ? (
                   <p className="data-content-results-font-price">
-                    ${props.coinList.market_data.current_price.usd.toFixed(6)}
+                    ${props.coinList.market_data.current_price.usd.toFixed(4)}
                   </p>
                 ) : (
                   <p className="data-content-results-font-price">

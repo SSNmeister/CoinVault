@@ -14,22 +14,15 @@ const Home = (props) => {
             <h1 className="header-fonts">Explore the Markets</h1>
           </div>
           <Link to="/market" className="marketplace-image-box">
-            <img
-              onClick={() => {
-                props.handleClick("bitcoin");
-              }}
-              className="marketplace-image"
-              src={logo}
-              alt="coinImage"
-            />
+            <img className="marketplace-image" src={logo} alt="coinImage" />
           </Link>
           <div className="description">
             <h2 className="description-fonts">
               The <span className="bold-fonts">Market Place</span> is a place
               where you can freely search for crypto coins around the world! You
-              can head there by clicking on the{" "}
-              <span className="bold-fonts">BitCoin</span> or select one of the
-              coins below!
+              can head there by clicking on Desmond the
+              <span className="bold-fonts"> Bitcoin</span> or select one of the
+              coins below.
             </h2>
           </div>
 
@@ -47,10 +40,10 @@ const Home = (props) => {
             <Link to="/market">
               <img
                 onClick={() => {
-                  props.handleClick("binancecoin");
+                  props.handleClick("pancakeswap-token");
                 }}
                 className="coin-icons"
-                src="https://assets.coingecko.com/coins/images/825/large/bnb-icon2_2x.png?1644979850"
+                src="https://assets.coingecko.com/coins/images/12632/large/pancakeswap-cake-logo_%281%29.png?1629359065"
                 alt="coin-icon-images"
               />
             </Link>
@@ -87,10 +80,10 @@ const Home = (props) => {
             <Link to="/market">
               <img
                 onClick={() => {
-                  props.handleClick("ethereum");
+                  props.handleClick("the-sandbox");
                 }}
                 className="coin-icons"
-                src="https://assets.coingecko.com/coins/images/279/large/ethereum.png?1595348880"
+                src="https://assets.coingecko.com/coins/images/12129/large/sandbox_logo.jpg?1597397942"
                 alt="coin-icon-images"
               />
             </Link>
@@ -107,7 +100,8 @@ const Home = (props) => {
             <h2 className="description-fonts">
               Your <span className="bold-fonts">Vault</span> is a place where
               you can store your favourit coins and actively monitor their
-              market progress! You can head to your vault by clicking on the
+              market progress! You can head to your vault by clicking on Damien
+              the
               <span className="bold-fonts"> Astronaut </span> above.
             </h2>
           </div>

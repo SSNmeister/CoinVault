@@ -1,14 +1,31 @@
 import React from "react";
 import "./watchList.css";
 import { UilArrowGrowth, UilChartDown } from "@iconscout/react-unicons";
-import { UilShoppingBasket } from "@iconscout/react-unicons";
-import thumbsup from "../assets/thumbsup.png";
+import { UilTrashAlt } from "@iconscout/react-unicons";
+import thumbsupname from "../assets/thumbsupname.png";
+import thumbsupprice from "../assets/thumbsupprice.png";
 
 const WatchList = (props) => {
-  // console.log(props.watchListFromApp);
-
   return (
     <div className="vault-bottom-half">
+      <div className="thumbsup-box-left">
+        {props.watchListFromApp.length !== 0 ? (
+          <img
+            src={thumbsupprice}
+            className="thumbsup"
+            alt="thumbsupimage"
+            onClick={() => {
+              if (props.sortClickPrice) {
+                props.runSortingByPriceReverse();
+              } else {
+                props.runSortingByPrice();
+              }
+            }}
+          />
+        ) : (
+          <></>
+        )}
+      </div>
       <div className="watchlist-card-main-box">
         {!props.watchListFromApp.length == 0 ? (
           <div className="watchlist-card-box">
@@ -27,17 +44,14 @@ const WatchList = (props) => {
             </div>
             {props.watchListFromApp.map((item, i) => {
               return (
-                // <div className="watchlist-inner-card-box">
-                //   <p className="ranking-number">Rank #{item.current_price}</p>
-                // </div>
                 <div
                   className="watchList-individual-rows"
                   key={item.id + Math.random() * 1000}
                 >
                   <div className="watchlist-delete-icon-box">
-                    <UilShoppingBasket
+                    <UilTrashAlt
                       className="watchlist-delete-icon"
-                      onClick={() => props.removeFromCart(i)}
+                      onClick={() => props.removeFromCart(item.id)}
                     />
                   </div>
                   <div
@@ -155,7 +169,18 @@ const WatchList = (props) => {
       </div>
       <div className="thumbsup-box">
         {props.watchListFromApp.length !== 0 ? (
-          <img src={thumbsup} className="thumbsup" alt="thumbsupimage" />
+          <img
+            src={thumbsupname}
+            className="thumbsup"
+            alt="thumbsupimage"
+            onClick={() => {
+              if (props.sortClick) {
+                props.runSortingReverse();
+              } else {
+                props.runSorting();
+              }
+            }}
+          />
         ) : (
           <></>
         )}

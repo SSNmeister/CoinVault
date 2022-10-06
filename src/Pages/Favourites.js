@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { UilArrowGrowth, UilChartDown } from "@iconscout/react-unicons";
-import { UilCancel } from "@iconscout/react-unicons";
+import { UilTrashAlt } from "@iconscout/react-unicons";
 import "../components/favourites.css";
 import ModalDuplicate from "../components/ModalDuplicate";
 import monsterimage from "../assets/monstererror.png";
 
 const Favourites = (props) => {
   const removeFromCart = (index) => {
-    const favouriteArray = props.watchListApp.filter((d, i) => i !== index);
+    const favouriteArray = props.watchListApp.filter((d, i) => d.id !== index);
     props.setWatchListApp(favouriteArray);
   };
 
@@ -60,9 +60,9 @@ const Favourites = (props) => {
                   <div className="favourites-individual-box" key={item.id}>
                     <div className="watchList-individual-rows">
                       <div className="watchlist-delete-icon-box">
-                        <UilCancel
+                        <UilTrashAlt
                           className="watchlist-delete-icon"
-                          onClick={() => removeFromCart(i)}
+                          onClick={() => removeFromCart(item.id)}
                         />
                       </div>
                       <div
@@ -193,7 +193,9 @@ const Favourites = (props) => {
           <div className="watchlist-card-box-error">
             <div className="watchlist-card-box-top">
               <div className="watchlist-card-box-description">
-                <h1>Uh oh... you do not have any coins in your vault!</h1>
+                <h1 className="watchlist-card-font-header">
+                  Uh oh... you do not have any coins in your vault!
+                </h1>
                 <h3 className="minidescription">
                   Head to the market and choose your coins, don't be too picky!
                 </h3>

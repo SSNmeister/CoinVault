@@ -6,11 +6,19 @@ import CoinCard from "../components/CoinCard";
 import WatchList from "../components/WatchList";
 import CoinCardError from "../components/CoinCardError";
 import Modal from "../components/Modal";
-import FavouriteBar from "../components/FavouriteBar";
+import fingerpoint from "../assets/fingerpoint.png";
 
 export default function Vault(props) {
   const [coinList, setCoinList] = useState([]);
   const [topCoin, setTopCoin] = useState([]);
+  const { watchListApp } = props;
+  const runSorting = props.runSorting;
+  const runSortingReverse = props.runSortingReverse;
+  const sortClick = props.sortClick;
+  const runSortingByPrice = props.runSortingByPrice;
+  const runSortingByPriceReverse = props.runSortingByPriceReverse;
+  const sortClickPrice = props.sortClickPrice;
+  const [isShown, setIsShown] = useState(false);
 
   //=================================================================
   //========================= TOP 5 COINS ===========================
@@ -24,7 +32,7 @@ export default function Vault(props) {
   useEffect(() => {
     getTopCoin();
     fetchCoin(props.userInput);
-  }, [props.userInput]);
+  }, [props.userInput, setTopCoin]);
 
   //=================================================================
   //========================= SEARCH COINS ==========================
@@ -46,6 +54,7 @@ export default function Vault(props) {
       );
       const data = await res.json();
       setCoinList(data);
+      console.log("data");
       console.log(data);
     } catch (e) {
       console.log("error");
@@ -65,7 +74,7 @@ export default function Vault(props) {
   const watchListFromApp = props.watchListApp;
 
   const removeFromCart = (index) => {
-    const watchListArry = props.watchListApp.filter((d, i) => i !== index);
+    const watchListArry = props.watchListApp.filter((d, i) => d.id !== index);
     props.setWatchListApp(watchListArry);
   };
 
@@ -93,10 +102,7 @@ export default function Vault(props) {
     setCoinDetails(modalData);
   };
 
-  //=================================================================
-  //======================== Favourite Bar ==========================
-  //=================================================================
-  const { watchListApp } = props;
+  console.log("watchListApp");
   console.log(watchListApp);
 
   //===================================================================
@@ -118,14 +124,25 @@ export default function Vault(props) {
             </div>
             <div className="searched-coin-list">
               {coinList.market_data ? (
-                <CoinCard coinList={coinList} addToCart={addToCart} />
+                <CoinCard
+                  coinList={coinList}
+                  addToCart={addToCart}
+                  watchListFromApp={watchListFromApp}
+                  watchListApp={watchListApp}
+                  removeFromCart={removeFromCart}
+                  setIsShown={setIsShown}
+                />
               ) : (
                 <CoinCardError coinList={coinList} addToCart={addToCart} />
               )}
             </div>
-            {/* <div className="favouritebar-box">
-              <FavouriteBar watchListApp={watchListApp} />
-            </div> */}
+            <div className="finger-pointing-box">
+              {isShown && props.watchListApp.length == 0 ? (
+                <img className="finger-pointing-image" src={fingerpoint} />
+              ) : (
+                <></>
+              )}
+            </div>
           </div>
         </div>
 
@@ -137,6 +154,12 @@ export default function Vault(props) {
               openModal={openModal}
               handleOpenModalDetails={handleOpenModalDetails}
               watchListFromApp={watchListFromApp}
+              runSorting={runSorting}
+              runSortingReverse={runSortingReverse}
+              sortClick={sortClick}
+              runSortingByPrice={runSortingByPrice}
+              runSortingByPriceReverse={runSortingByPriceReverse}
+              sortClickPrice={sortClickPrice}
             />
           ) : (
             <></>

@@ -42,6 +42,7 @@ const Modal = (props) => {
   //==================== Chart Data API =====================
   //=== fetching chart data from useEffect(props.openModalDetails) ===
   const fetchChartData = async (item) => {
+    setLoading(true);
     try {
       console.log(item);
 
@@ -49,6 +50,7 @@ const Modal = (props) => {
         `https://api.coingecko.com/api/v3/coins/${item}/market_chart?vs_currency=usd&days=${day}`
       );
       const data = await res.json();
+      console.log("data of prices over time");
       console.log(data);
 
       //================= Coin Description API ==================
@@ -58,7 +60,6 @@ const Modal = (props) => {
       );
       const dataCoinDescription = await resCoinDescription.json();
       setCoinDetails(dataCoinDescription);
-      console.log(dataCoinDescription);
 
       //=========================================================
       //=== convert array into x(time) and y(value) key-value pairs ===
@@ -68,6 +69,7 @@ const Modal = (props) => {
           y: item[1],
         };
       });
+      console.log("chart data converted to x and y values");
       console.log(coinChartData);
 
       //=========================================================
@@ -95,21 +97,19 @@ const Modal = (props) => {
           },
         ],
       };
-
+      console.log("Data of x and y formatted to price and time");
       console.log(formattedData);
       setChartData(formattedData);
+      setLoading(false);
     } catch (e) {
       console.log("error");
+      setLoading(false);
     }
   };
 
   //=========================================================
   //========== Run fetchChartData with item.id ==============
   useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
     if (!props.openModalDetails) return null;
     //==== watchlist data's item.id from WatchList ====
     fetchChartData(props.openModalDetails);

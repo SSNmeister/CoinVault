@@ -44,72 +44,72 @@ const ModalDuplicate = (props) => {
   //==================== Chart Data API =====================
   //=== fetching chart data from useEffect(props.openModalDetails) ===
   const fetchChartData = async (item) => {
-    console.log(item);
+    setLoading(true);
+    try {
+      const res = await fetch(
+        `https://api.coingecko.com/api/v3/coins/${item}/market_chart?vs_currency=usd&days=${day}`
+      );
+      const data = await res.json();
+      console.log(data);
 
-    const res = await fetch(
-      `https://api.coingecko.com/api/v3/coins/${item}/market_chart?vs_currency=usd&days=${day}`
-    );
-    const data = await res.json();
-    console.log(data);
+      //================= Coin Description API ==================
+      // === fetching coin description data from useEffect() =====
+      const resCoinDescription = await fetch(
+        `https://api.coingecko.com/api/v3/coins/${item}?community_data=true&developer_data=true`
+      );
+      const dataCoinDescription = await resCoinDescription.json();
+      setCoinDetails(dataCoinDescription);
+      console.log(dataCoinDescription);
 
-    //================= Coin Description API ==================
-    // === fetching coin description data from useEffect() =====
-    const resCoinDescription = await fetch(
-      `https://api.coingecko.com/api/v3/coins/${item}?community_data=true&developer_data=true`
-    );
-    const dataCoinDescription = await resCoinDescription.json();
-    setCoinDetails(dataCoinDescription);
-    console.log(dataCoinDescription);
+      //=========================================================
+      //=== convert array into x(time) and y(value) key-value pairs ===
+      const coinChartData = data.prices.map((item) => {
+        return {
+          x: item[0],
+          y: item[1],
+        };
+      });
+      console.log(coinChartData);
+      // setHistoricalData(coinChartData);
 
-    //=========================================================
-    //=== convert array into x(time) and y(value) key-value pairs ===
-    const coinChartData = data.prices.map((item) => {
-      return {
-        x: item[0],
-        y: item[1],
+      //=========================================================
+      //=============== Format the data (object) ================
+      //==== into acceptable format of chart.js (Area chart) ====
+      const formattedData = {
+        labels: coinChartData.map((item) => {
+          //format the x key (timestamp) into mmm dd
+          if (day === "7") {
+            return moment(item.x).format("MMM DD");
+          } else {
+            return moment(item.x).format("h:mm a");
+          }
+        }),
+        datasets: [
+          {
+            fill: true,
+            label: `Price over past ${day} day(s)`,
+            data: coinChartData.map((item) => item.y),
+            // borderColor: "rgb(78, 43, 255, 0.6)",
+            color: "white",
+            borderColor: "gold",
+            backgroundColor: "rgb(0, 0, 0, 0.3)",
+            borderWidth: "1",
+          },
+        ],
       };
-    });
-    console.log(coinChartData);
-    // setHistoricalData(coinChartData);
 
-    //=========================================================
-    //=============== Format the data (object) ================
-    //==== into acceptable format of chart.js (Area chart) ====
-    const formattedData = {
-      labels: coinChartData.map((item) => {
-        //format the x key (timestamp) into mmm dd
-        if (day === "7") {
-          return moment(item.x).format("MMM DD");
-        } else {
-          return moment(item.x).format("h:mm a");
-        }
-      }),
-      datasets: [
-        {
-          fill: true,
-          label: `Price over past ${day} day(s)`,
-          data: coinChartData.map((item) => item.y),
-          // borderColor: "rgb(78, 43, 255, 0.6)",
-          color: "white",
-          borderColor: "gold",
-          backgroundColor: "rgb(0, 0, 0, 0.3)",
-          borderWidth: "1",
-        },
-      ],
-    };
-
-    console.log(formattedData);
-    setChartData(formattedData);
-    // props.handleChartDataApp(formattedData);
+      console.log(formattedData);
+      setChartData(formattedData);
+      setLoading(false);
+    } catch (e) {
+      console.log("error");
+      setLoading(false);
+    }
   };
 
   //=========================================================
   //========== Run fetchChartData with item.id ==============
   useEffect(() => {
-    setLoading(true);
-    setTimeout(() => {
-      setLoading(false);
-    }, 1000);
     if (!props.openModalDetailsDuplicate) return null;
     //==== watchlist data's item.id from WatchList ====
     fetchChartData(props.openModalDetailsDuplicate);
