@@ -12,12 +12,6 @@ export default function Vault(props) {
   const [coinList, setCoinList] = useState([]);
   const [topCoin, setTopCoin] = useState([]);
   const { watchListApp } = props;
-  const runSorting = props.runSorting;
-  const runSortingReverse = props.runSortingReverse;
-  const sortClick = props.sortClick;
-  const runSortingByPrice = props.runSortingByPrice;
-  const runSortingByPriceReverse = props.runSortingByPriceReverse;
-  const sortClickPrice = props.sortClickPrice;
   const [isShown, setIsShown] = useState(false);
 
   //=================================================================
@@ -92,13 +86,13 @@ export default function Vault(props) {
   const [openModalDetails, setOpenModalDetails] = useState("");
   const [coinDetails, setCoinDetails] = useState("");
 
-  //=========== Set modalData to item.id ===========
-  //= Receive watchlist data from WatchList array =
+  //================= Set ModalDetails to item.id ===================
+  //==================== watchlistfromApp data ======================
   const handleOpenModalDetails = (modalData) => {
     setOpenModal(true);
     setOpenModalDetails(modalData.id);
 
-    //======= CHART (left) =======
+    //======================== CHART (left) =========================
     setCoinDetails(modalData);
   };
 
@@ -110,7 +104,6 @@ export default function Vault(props) {
   return (
     <>
       <div className="App">
-        {/* <Header /> */}
         <div className="main-box">
           <div className="main-content">
             <MainContent
@@ -154,12 +147,6 @@ export default function Vault(props) {
               openModal={openModal}
               handleOpenModalDetails={handleOpenModalDetails}
               watchListFromApp={watchListFromApp}
-              runSorting={runSorting}
-              runSortingReverse={runSortingReverse}
-              sortClick={sortClick}
-              runSortingByPrice={runSortingByPrice}
-              runSortingByPriceReverse={runSortingByPriceReverse}
-              sortClickPrice={sortClickPrice}
             />
           ) : (
             <></>

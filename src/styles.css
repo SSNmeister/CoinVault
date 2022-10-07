@@ -429,9 +429,6 @@ p {
 }
 .finger-pointing-image {
   height: 20vh;
-  transition: all 0.2s ease-in-out;
-
-  /* transition: width 0.5s, height 0.5s, transform 0s; */
 }
 
 .vault-bottom-half {
@@ -455,9 +452,27 @@ p {
   align-items: center;
   max-height: 15vh;
 }
+.thumbsup-box-fav {
+  position: absolute;
+  top: 30vh;
+  right: 0vw;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  max-height: 15vh;
+}
+.thumbsup-box-fav-left {
+  position: absolute;
+  top: 30vh;
+  left: 0vw;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  max-height: 15vh;
+}
 
 .thumbsup {
-  height: 20vh;
+  height: 18vh;
   z-index: +1;
 }
 .thumbsup:hover {

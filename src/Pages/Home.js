@@ -99,7 +99,7 @@ const Home = (props) => {
           <div className="description2">
             <h2 className="description-fonts">
               Your <span className="bold-fonts">Vault</span> is a place where
-              you can store your favourit coins and actively monitor their
+              you can store your favourite coins and actively monitor their
               market progress! You can head to your vault by clicking on Damien
               the
               <span className="bold-fonts"> Astronaut </span> above.

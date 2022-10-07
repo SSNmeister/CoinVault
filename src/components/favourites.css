@@ -1,6 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Outfit:wght@200;400;600;700;800&display=swap");
 
 .favourite {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   min-height: 100vh;
   background: url("../assets/cryptoBackground2.jpeg") no-repeat center
     center/cover;
@@ -16,6 +19,7 @@
 .watchlist-card-main-box {
   display: flex;
   justify-content: center;
+  height: fit-content;
 }
 .watchlist-card-box {
   width: 70vw;

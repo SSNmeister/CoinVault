@@ -58,8 +58,10 @@ const App = () => {
     setWatchListApp(sortedOutput);
     setSortClickPrice(false);
   };
-
-  console.log(userInput);
+  console.log(watchListApp);
+  console.log(`sortclickprice ${sortClickPrice}`);
+  console.log(`sortclickname ${sortClick}`);
+  // console.log(userInput);
   //=================================================================
 
   return (
@@ -106,6 +108,12 @@ const App = () => {
               <Favourites
                 watchListApp={watchListApp}
                 setWatchListApp={setWatchListApp}
+                runSorting={runSorting}
+                runSortingReverse={runSortingReverse}
+                sortClick={sortClick}
+                runSortingByPrice={runSortingByPrice}
+                runSortingByPriceReverse={runSortingByPriceReverse}
+                sortClickPrice={sortClickPrice}
               />
             }
           />

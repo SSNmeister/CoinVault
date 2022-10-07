@@ -2,30 +2,10 @@ import React from "react";
 import "./watchList.css";
 import { UilArrowGrowth, UilChartDown } from "@iconscout/react-unicons";
 import { UilTrashAlt } from "@iconscout/react-unicons";
-import thumbsupname from "../assets/thumbsupname.png";
-import thumbsupprice from "../assets/thumbsupprice.png";
 
 const WatchList = (props) => {
   return (
     <div className="vault-bottom-half">
-      <div className="thumbsup-box-left">
-        {props.watchListFromApp.length !== 0 ? (
-          <img
-            src={thumbsupprice}
-            className="thumbsup"
-            alt="thumbsupimage"
-            onClick={() => {
-              if (props.sortClickPrice) {
-                props.runSortingByPriceReverse();
-              } else {
-                props.runSortingByPrice();
-              }
-            }}
-          />
-        ) : (
-          <></>
-        )}
-      </div>
       <div className="watchlist-card-main-box">
         {!props.watchListFromApp.length == 0 ? (
           <div className="watchlist-card-box">
@@ -163,24 +143,6 @@ const WatchList = (props) => {
               );
             })}
           </div>
-        ) : (
-          <></>
-        )}
-      </div>
-      <div className="thumbsup-box">
-        {props.watchListFromApp.length !== 0 ? (
-          <img
-            src={thumbsupname}
-            className="thumbsup"
-            alt="thumbsupimage"
-            onClick={() => {
-              if (props.sortClick) {
-                props.runSortingReverse();
-              } else {
-                props.runSorting();
-              }
-            }}
-          />
         ) : (
           <></>
         )}
