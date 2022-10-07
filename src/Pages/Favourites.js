@@ -140,12 +140,7 @@ const Favourites = (props) => {
                               {item.market_data.price_change_percentage_24h !=
                               null ? (
                                 <>
-                                  <UilChartDown
-                                    className="watchlist-pricechange-icon-red"
-                                    // onClick={() => {
-                                    //   props.handleOpenModalDetails(item.id);
-                                    // }}
-                                  />
+                                  <UilChartDown className="watchlist-pricechange-icon-red" />
                                 </>
                               ) : (
                                 <>
@@ -171,12 +166,7 @@ const Favourites = (props) => {
                               {item.market_data.price_change_percentage_24h !=
                               null ? (
                                 <>
-                                  <UilArrowGrowth
-                                    className="watchlist-pricechange-icon-green"
-                                    // onClick={() => {
-                                    //   props.handleOpenModalDetails(item.id);
-                                    // }}
-                                  />
+                                  <UilArrowGrowth className="watchlist-pricechange-icon-green" />
                                 </>
                               ) : (
                                 <>

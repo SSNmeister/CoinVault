@@ -61,7 +61,6 @@ const App = () => {
   console.log(watchListApp);
   console.log(`sortclickprice ${sortClickPrice}`);
   console.log(`sortclickname ${sortClick}`);
-  // console.log(userInput);
   //=================================================================
 
   return (

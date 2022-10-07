@@ -97,7 +97,6 @@ const CoinCard = (props) => {
                     </p>
                   ) : (
                     <div className="data2-error-content">
-                      {/* <UilFrown className="data2-error-icon" /> */}
                       <p className="data2-content-results-fonts-error">
                         Not Found
                       </p>
@@ -134,8 +133,6 @@ const CoinCard = (props) => {
                       </p>
                     </div>
                   )}
-
-                  {/* </p> */}
                 </div>
                 <div className="rows">
                   <h3 className="data2-content-fonts">24 Hour Low</h3>
